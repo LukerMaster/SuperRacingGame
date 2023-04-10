@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6mgw1qq411hp"]
+
+[ext_resource type="Script" path="res://PoweredWheel.gd" id="1_1vbi7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h0vn8"]
+height = 0.235
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vwyc6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6ijlo"]
+height = 0.24
+radius = 0.53
+
+[node name="Wheel" type="CollisionShape3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h0vn8")
+script = ExtResource("1_1vbi7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1, -8.35187e-23, 0, -8.35187e-24, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vwyc6")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, -8.35187e-23, 1, 0, 0, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_6ijlo")

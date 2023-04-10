@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8frrcegwy03"]
+
+[ext_resource type="PackedScene" uid="uid://ddvvf6uamymd3" path="res://Car.tscn" id="1_sgq28"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgu4t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_giur7"]
+albedo_color = Color(0, 0.796078, 0.592157, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6mkbb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tqbac"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60wl4"]
+
+[node name="Test World" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.59184, 1.24567, -27.3479)
+mesh = SubResource("BoxMesh_sgu4t")
+skeleton = NodePath("../Car")
+surface_material_override/0 = SubResource("StandardMaterial3D_giur7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.30196, 0.622834, -4.65848)
+mesh = SubResource("BoxMesh_sgu4t")
+skeleton = NodePath("../Car")
+surface_material_override/0 = SubResource("StandardMaterial3D_giur7")
+
+[node name="StaticBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00415611, 0.00791955, -0.0025816)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00328224, -9.53674e-07, 0.00348231)
+shape = SubResource("WorldBoundaryShape3D_6mkbb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(180.384, 0, 0, 0, 1, 0, 0, 0, 204.017, 0, 0, 0)
+mesh = SubResource("PlaneMesh_tqbac")
+surface_material_override/0 = SubResource("StandardMaterial3D_60wl4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.25959, 0, 0, 0, 0.443134, 0.896455, 0, -0.228445, 0.112925, -0.0868365, 4.75853, -0.0139025)
+light_color = Color(1, 1, 0.811765, 1)
+directional_shadow_mode = 1
+
+[node name="Car" parent="." instance=ExtResource("1_sgq28")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.7652, 2.03195, 0)
